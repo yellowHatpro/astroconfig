@@ -5,21 +5,32 @@ return {
     opts = function(_, opts)
       -- customize the dashboard header
       opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
+        "█░░█ █▀▀ █░░ █░░ █▀▀█ █░░░█ ",
+        "█▄▄█ █▀▀ █░░ █░░ █░░█ █▄█▄█ ",
+        "▄▄▄█ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀▀ ░▀░▀░ ",
+        "",
+        "█░░█ █▀▀█ ▀▀█▀▀ ",
+        "█▀▀█ █▄▄█ ░░█░░ ",
+        "▀░░▀ ▀░░▀ ░░▀░░ ",
+        "",
+        "█▀▀█ █▀▀█ █▀▀█ ",
+        "█░░█ █▄▄▀ █░░█ ",
+        "█▀▀▀ ▀░▀▀ ▀▀▀▀",
       }
       return opts
     end,
   },
+
+  {
+    "L3MON4D3/LuaSnip",
+    config = function(plugin, opts)
+      require "plugins.configs.luasnip"(plugin, opts)
+      require("luasnip.loaders.from_snipmate").lazy_load {
+        paths = { "~/.config/nvim/lua/user/snippets" },
+      }
+    end,
+  },
+
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --
