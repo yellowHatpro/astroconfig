@@ -25,4 +25,20 @@ return {
     "wakatime/vim-wakatime",
     event = "User AstroFile",
   },
+  {
+    "bjartek/nvim-cadence",
+    event = "User AstroFile",
+    config = function()
+      -- i really like format on save and this does the trick:Wq
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.cdc" },
+        command = ":normal gg=G''",
+      })
+      -- startup the cadence shared lspconfig
+      require("lspconfig").cadence.setup {
+        filetypes = { "cdc" },
+        cmd = { "flow", "cadence", "language-server" },
+      }
+    end,
+  },
 }
